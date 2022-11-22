@@ -1,14 +1,13 @@
 
-
-import NavB from './componentes/navBar/navBar.jsx'
 import './App.css'
+import CollapsibleExample from './Componentes/NavBar/NavBar'
 
 function App() {
   
 
   return (
     <div className="App">
-      <NavB/>
+     <CollapsibleExample/>
     </div>
   )
 }
