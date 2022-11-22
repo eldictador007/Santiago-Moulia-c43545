@@ -3,7 +3,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import CartWidget from '../CartWidget/CartWidget';
-import { Button } from 'react-bootstrap';
+
 
 
 function NavBar() {
@@ -32,9 +32,9 @@ function NavBar() {
           <Nav.Link href="#cart">
               < CartWidget />
               </Nav.Link>            
-            <Nav.Link eventKey={2} href="#login">
+            {/* <Nav.Link eventKey={2} href="#login">
               Ingresar
-            </Nav.Link>
+            </Nav.Link> */}
           </Nav>
         </Navbar.Collapse>
         
