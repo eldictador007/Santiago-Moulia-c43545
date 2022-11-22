@@ -5,12 +5,12 @@ function Counter() {
     const [count, setCount] = useState(0);
 
     useEffect(() => {
-        document.title = `You clicked ${count} times`;  });
+        document.title = `You clicked ${count} times`;  },[]);
     return (
       <div>
-        <p>You clicked {count} times</p>
+        <h4>Hiciste {count} compras!</h4>
         <button onClick={() => setCount(count + 1)}>
-          Contar
+          Comprar
         </button>
       </div>
     );

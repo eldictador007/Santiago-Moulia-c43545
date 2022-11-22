@@ -1,19 +1,17 @@
 
-import Counter from './Componentes/Contador/contador'
-import CollapsibleExample from './Componentes/NavBar/NavBar'
-import './App.css'
+
+import NavBar from './Componentes/NavBar/NavBar'
 import Item from './Componentes/ItemListContainer/itemList'
+import './App.css'
 
 function App() {
   
 
   return (
     <div className="App">
-     <CollapsibleExample/>
+     <NavBar/>
      <br />
-     <Item/>
-     <br />
-     <Counter/>
+     <Item greeting={'Muy pronto podras hacer una compra'} />
     </div>
   )
 }
