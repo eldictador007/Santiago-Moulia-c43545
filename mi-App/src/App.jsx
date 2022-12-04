@@ -1,4 +1,4 @@
-
+import {BrowserRouter} from 'react-router-dom'
 
 import NavBar from './Componentes/NavBar/NavBar'
 import Item from './Componentes/ItemListContainer/itemList'
@@ -8,11 +8,10 @@ function App() {
   
 
   return (
-    <div className="App">
+    <>
      <NavBar/>
-     <br />
-     <Item greeting={'Muy pronto podras hacer una compra'} />
-    </div>
+       <Item/>
+       </>
   )
 }
 
