@@ -1,8 +1,8 @@
-import {BrowserRouter} from 'react-router-dom'
+// import './App.css'
 
+import {BrowserRouter} from 'react-router-dom'
 import NavBar from './Componentes/NavBar/NavBar'
-import Item from './Componentes/ItemListContainer/itemList'
-import './App.css'
+import ItemListContainer from './Componentes/ItemListContainer/itemListCont'
 
 function App() {
   
@@ -10,7 +10,7 @@ function App() {
   return (
     <>
      <NavBar/>
-       <Item/>
+       <ItemListContainer/>
        </>
   )
 }
