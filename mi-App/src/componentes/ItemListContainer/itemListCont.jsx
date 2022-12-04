@@ -1,10 +1,7 @@
-import Counter from "../Contador/contador"
-// import Titulo from "../Titulos/Titulo"
 
 import {useState, useEffect} from 'react'
 import { gFetch } from '../../assets/fetchProds'
-
-// acciones  api -> resultado (asincrónico)
+import { ItemList } from "./itemList"
 
 const ItemListContainer = ( { saludo = 'BIENVENID@' } ) => { 
     const [ products, setProduct ] = useState([])
@@ -22,25 +19,9 @@ const ItemListContainer = ( { saludo = 'BIENVENID@' } ) => {
                 <div className="spinner-border" role="status">
                   <span className="visually-hidden">Loading...</span>
                 </div>
-            </div> : products.map( product => <div style={{ margin: 50, maxWidth:450}} className='col-sm-8' key={product.id}>                                                        
-                                                    <div className="card text-center w-100 mt-5" >
-                                                        <div className="card-header ">
-                                                            {`${product.name} - ${product.cat}`}
-                                                        </div>
-                                                        <div className="card-body ">
-                                                            <img src={product.pic} alt={product.name} className='w-50' />
-                                                            <Counter/> 
-                                                            <p className="card-text">Precio: $ {product.price} x unidad </p>
-                                                        </div>                                                
-                                                        <div className="card-footer">                                                        
-                                                            <button className="btn btn-outline-primary btn-block">
-                                                                detalles
-                                                            </button>
-                                                        </div>
-                                                    </div>                                                    
-                                               </div> 
-                                  ) 
-            }            
+            </div> : <ItemList productos={products}/>
+         
+        }            
         
         </section>
     )
@@ -48,6 +29,25 @@ const ItemListContainer = ( { saludo = 'BIENVENID@' } ) => {
 
 export default ItemListContainer
 
+
+//  products.map( product => <div style={{ margin: 50, maxWidth:450}} className='col-sm-8' key={product.id}>                                                        
+//                                             <div className="card text-center w-100 mt-5" >
+//                                                 <div className="card-header ">
+//                                                     {`${product.name} - ${product.cat}`}
+//                                                 </div>
+//                                                 <div className="card-body ">
+//                                                     <img src={product.pic} alt={product.name} className='w-50' />
+//                                                     <Counter/> 
+//                                                     <p className="card-text">Precio: $ {product.price} x unidad </p>
+//                                                 </div>                                                
+//                                                 <div className="card-footer">                                                        
+//                                                     <button className="btn btn-outline-primary btn-block">
+//                                                         detalles
+//                                                     </button>
+//                                                 </div>
+//                                             </div>                                                    
+//                                        </div> 
+//                           ) 
 
 // const Item = ({  greeting }) => {
 //     let tituloApp = 'BIENVENID@!' 
