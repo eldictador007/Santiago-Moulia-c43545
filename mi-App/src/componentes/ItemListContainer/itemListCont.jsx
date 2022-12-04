@@ -1,12 +1,12 @@
 import Counter from "../Contador/contador"
-import Titulo from "../Titulos/Titulo"
+// import Titulo from "../Titulos/Titulo"
 
 import {useState, useEffect} from 'react'
-import { gFetch } from '../../assets/gFetch'
+import { gFetch } from '../../assets/fetchProds'
 
 // acciones  api -> resultado (asincrónico)
 
-const ItemListContainer = ( { saludo = 'saludo por defecto' } ) => { 
+const ItemListContainer = ( { saludo = 'BIENVENID@' } ) => { 
     const [ products, setProduct ] = useState([])
     const [loading, setLoading] = useState(true)
     
@@ -16,29 +16,30 @@ const ItemListContainer = ( { saludo = 'saludo por defecto' } ) => {
     
     return (
         <section >        
-            { loading ? <h2>loading...😅</h2> : products.map( product =>  
-                                                <div            
-                                                    style={{ marginLeft: 100}}
-                                                    className='col-md-3'
-                                                    key={product.id}
-                                                >                                                        
-                                                    <div className="card w-100 mt-5" >
+            { loading ? <div style={{padding:120,textAlign:'center'}}>
+                <h1 className="text-bg-primary">{saludo}!</h1>                
+                    <br></br>
+                <div className="spinner-border" role="status">
+                  <span className="visually-hidden">Loading...</span>
+                </div>
+            </div> : products.map( product => <div style={{ margin: 50, maxWidth:450}} className='col-sm-8' key={product.id}>                                                        
+                                                    <div className="card text-center w-100 mt-5" >
                                                         <div className="card-header ">
-                                                            {`${product.name} - ${product.categoria}`}
+                                                            {`${product.name} - ${product.cat}`}
                                                         </div>
                                                         <div className="card-body ">
-                                                            <img src={product.foto} alt='' className='w-50' />
-                                                              - $ {product.price}                                                            
+                                                            <img src={product.pic} alt={product.name} className='w-50' />
+                                                            <Counter/> 
+                                                            <p className="card-text">Precio: $ {product.price} x unidad </p>
                                                         </div>                                                
                                                         <div className="card-footer">                                                        
                                                             <button className="btn btn-outline-primary btn-block">
                                                                 detalles
                                                             </button>
                                                         </div>
-                                                    </div>                                                                   
-                                                    
-                                                </div> 
-                        ) 
+                                                    </div>                                                    
+                                               </div> 
+                                  ) 
             }            
         
         </section>
