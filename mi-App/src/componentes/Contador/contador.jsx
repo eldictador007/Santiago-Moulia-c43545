@@ -5,9 +5,9 @@ import Badge from 'react-bootstrap/Badge';
 
 function Counter() {
     const [count, setCount] = useState(0);    
-    useEffect(() => {
-        document.title = `You clicked ${count} times`;
-        },[]);
+    // useEffect(() => {
+    //     document.title = `You clicked ${count} times`;
+    //     },[]);
     return (
       <div>
         <button className='btn bg-warning p-2 m-3 fw-bolder' onClick={() => setCount(count - 1)}> - </button>        

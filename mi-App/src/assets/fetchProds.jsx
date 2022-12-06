@@ -11,6 +11,8 @@ let prod = [
     {id: '09', name: 'Basic Dad', cat: 'REMERAS',price: '160',stock: '99',  pic:'https://www.shutterstock.com/image-photo/tshirt-design-young-man-blank-600w-667154830.jpg'},
     {id: '10', name: 'Gorra Fede', cat: 'GORRAS',price: '9999',stock: '1',  pic:'https://cdn.palbincdn.com/users/31244/images/GORRA-BASICA-JUNIOR-CUSTOMIZASHOPBF10B-COLOR-ROSA-1611838353.jpg'}
 ]
+
+// (id) para itemlistcont
 export const gFetch = () => {
     return new Promise( (res, rej)=>{
         
