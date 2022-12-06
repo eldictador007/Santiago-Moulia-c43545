@@ -9,7 +9,7 @@ export const Item=({product})=>{
                                                         </div>
                                                         <div className="card-body ">
                                                             <img src={product.pic} alt={product.name} className='w-50' />
-                                                            <Counter/> 
+                                                           
                                                             <p className="card-text">Precio: $ {product.price} x unidad </p>
                                                         </div>                                                
                                                         <div className="card-footer">                                                        
