@@ -1,15 +1,23 @@
 
 import {useState, useEffect} from 'react'
+import { useParams } from 'react-router-dom'
 import { gFetch } from '../../assets/fetchProds'
 import { ItemList } from "./itemList"
 
 const ItemListContainer = ( { saludo = 'BIENVENID@' } ) => { 
     const [ products, setProduct ] = useState([])
     const [loading, setLoading] = useState(true)
+    const {categoryId}= useParams()
     
     useEffect(()=>{
-        gFetch().then(data => setProduct(data)).catch(err => console.log(err)).finally(()=> setLoading(false))
-    }, [])
+        if (categoryId){
+
+            gFetch().then(data => setProduct(data.filter(prod=>prod.cat==categoryId.toUpperCase()))).catch(err => console.log(err)).finally(()=> setLoading(false))
+        }else{
+            gFetch().then(data => setProduct(data)).catch(err => console.log(err)).finally(()=> setLoading(false))
+
+        }
+    }, [categoryId])
     
     return (
         <section >        

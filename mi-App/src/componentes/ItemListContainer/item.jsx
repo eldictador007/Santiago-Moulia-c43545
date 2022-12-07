@@ -1,4 +1,6 @@
-import Counter from "../Contador/contador"
+import { Link } from "react-router-dom"
+
+
 
 
 export const Item=({product})=>{
@@ -12,10 +14,12 @@ export const Item=({product})=>{
                                                            
                                                             <p className="card-text">Precio: $ {product.price} x unidad </p>
                                                         </div>                                                
-                                                        <div className="card-footer">                                                        
+                                                        <div className="card-footer">        
+                                                        <Link to={`/detalle/${product.id}`}>
                                                             <button className="btn btn-outline-primary btn-block">
                                                                 detalles
                                                             </button>
+                                                        </Link>                                                
                                                         </div>
                                                     </div>                                                    
                                                </div> 
