@@ -6,6 +6,10 @@ import ItemListContainer from './Componentes/ItemListContainer/itemListCont'
 import { ItemDetailContainer } from './Componentes/itemDetailContainer/itemDetailCont'
 import {CartContainer} from './Componentes/CartContainer/cartContainer'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { createContext } from 'react'
+import { CartContext } from './context/cartContext'
+
+const Context = createContext()
 
 
 function App() {
@@ -14,6 +18,10 @@ function App() {
   return (
     
      <BrowserRouter>
+     <CartContext.Provider value={{
+      
+     }}>
+
      <NavBar/>
       <Routes>
         <Route path='/' element={<ItemListContainer/>}/>
@@ -26,6 +34,7 @@ function App() {
        {/* </> */}
        </Routes>
 
+     </CartContext.Provider>
        </BrowserRouter>
        
        
