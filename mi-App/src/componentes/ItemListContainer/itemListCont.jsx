@@ -1,6 +1,10 @@
 
 import {useState, useEffect} from 'react'
 import { useParams } from 'react-router-dom'
+//
+
+import {doc, getDoc, getDocs, getFirestore} from 'firebase/firestore'
+
 import { gFetch } from '../../assets/fetchProds'
 import { ItemList } from "./itemList"
 
@@ -9,15 +13,32 @@ const ItemListContainer = ( { saludo = 'BIENVENID@' } ) => {
     const [loading, setLoading] = useState(true)
     const {categoryId}= useParams()
     
-    useEffect(()=>{
-        if (categoryId){
+     useEffect(()=>{
+         if (categoryId){
 
-            gFetch().then(data => setProduct(data.filter(prod=>prod.cat==categoryId.toUpperCase()))).catch(err => console.log(err)).finally(()=> setLoading(false))
-        }else{
-            gFetch().then(data => setProduct(data)).catch(err => console.log(err)).finally(()=> setLoading(false))
+             gFetch().then(data => setProduct(data.filter(prod=>prod.cat==categoryId.toUpperCase()))).catch(err => console.log(err)).finally(()=> setLoading(false))
+         }else{
+             gFetch().then(data => setProduct(data)).catch(err => console.log(err)).finally(()=> setLoading(false))
 
-        }
-    }, [categoryId])
+         }
+     }, [categoryId])
+
+
+     
+    //  useEffect(()=>{
+
+    //      const db= getFirestore()
+    //      const queryDoc= doc(db, 'products', 'FDWkVsfNIzRQvtNzW4Xt')
+    //      getDoc(queryDoc).then(resp=>setProduct(resp.id))
+    //  },[categoryId])
+
+    // useEffect(()=>{
+    //     const db = getFirestore()
+    //     const queryDocuments= docs(db,'products')
+    //     getDocs(queryDocuments).then(data=>setProduct(data.docs.map(product=>({id:product.id, ...product.data()}))))
+    //     .catch(err=>console.log(err))
+
+    // },[id])
     
     return (
         <section >        

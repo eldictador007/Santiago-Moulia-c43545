@@ -7,7 +7,7 @@ export const Item=({product})=>{
                 return    <div style={{ margin: 50, maxWidth:450}} className='col-sm-8' >                                                        
                                                     <div className="card text-center w-100 mt-5" >
                                                         <div className="card-header ">
-                                                            {`${product.name} - ${product.cat}`}
+                                                            {`${product.name} - ${product.category}`}
                                                         </div>
                                                         <div className="card-body ">
                                                             <img src={product.pic} alt={product.name} className='w-50' />
