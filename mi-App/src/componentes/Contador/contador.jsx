@@ -9,12 +9,12 @@ function Counter({stock}) {
     //     document.title = `You clicked ${count} times`;
     //     },[]);
     return (
-      <div className='container px-5'>
-        <div className='container position-absolute top-50 start-50'>
+      <div className='container'>
+        
         <button className='btn bg-warning p-2 m-3 fw-bolder' onClick={() => count>0? setCount(count - 1): alert('No es posible realizar esa operacion')}> - </button>        
        <Badge id='counter' bg="dark" pill='true' text="light">{count}</Badge> 
         <button className='btn bg-success p-2 m-3 fw-bolder' onClick={() => count<stock? setCount(count + 1): alert('Lo sentimos, no hay mas aticulos disponbles')}> + </button>
-        </div>
+        
         <br></br>
         <button className='btn bg-info p-3 m-5 fw-bolder' onClick={() => alert(`Agregaste ${count} productos al carro!`)}>Agregar al Carrito</button>
       </div>

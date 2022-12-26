@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom'
 import {doc, getDoc, getDocs, getFirestore} from 'firebase/firestore'
 
 import { gFetch } from '../../assets/fetchProds'
-import { ItemList } from "./itemList"
+import  ItemList  from "./itemList"
 
 const ItemListContainer = ( { saludo = 'BIENVENID@' } ) => { 
     const [ products, setProduct ] = useState([])
@@ -42,7 +42,7 @@ const ItemListContainer = ( { saludo = 'BIENVENID@' } ) => {
     
     return (
         <section >        
-            { loading ? <div style={{padding:120,textAlign:'center'}}>
+            { loading ? <div  >
                 <h1 className="text-bg-primary">{saludo}!</h1>                
                     <br></br>
                 <div className="spinner-border" role="status">

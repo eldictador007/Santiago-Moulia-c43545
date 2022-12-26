@@ -3,6 +3,7 @@ import { gFetch } from "../../assets/fetchProds"
 import { useEffect, useState } from "react"
 import Counter from "../Contador/contador"
 import { useParams } from "react-router-dom"
+import { ItemDetail } from "./itemDetail"
 
 
 export const ItemDetailContainer=()=>{
@@ -11,9 +12,19 @@ export const ItemDetailContainer=()=>{
     const [loading, setLoading] = useState(true)
     const {itemId}= useParams()
     
+    // useEffect(()=>{
+    //     gFetch().then(data => setItem(data.find(prod=>prod.id==itemId))).catch(err => console.log(err)).finally(()=> setLoading(false))
+    // }, [itemId])
+    // console.log(item)
+
     useEffect(()=>{
-        gFetch().then(data => setItem(data.find(prod=>prod.id==itemId))).catch(err => console.log(err)).finally(()=> setLoading(false))
-    }, [])
+        if (setItem){
+            gFetch().then(data => setItem(data.find(prod=>prod.id==itemId))).catch(err => console.log(err)).finally(()=> setLoading(false))
+        }else{
+            gFetch().then(data => setItem(data)).catch(err => console.log(err)).finally(()=> setLoading(false))
+
+        }
+    }, [setItem])
     
     return <>
         { loading ? <div style={{padding:120,textAlign:'center'}}>
@@ -21,11 +32,8 @@ export const ItemDetailContainer=()=>{
                 <div className="spinner-border" role="status">
                   <span className="visually-hidden">Loading...</span>
                 </div>
-            </div> : <Item product={item}/>
+            </div> : <ItemDetail product={item}/>
          
-        }            
-    
-    <Counter stock={item.stock}/> 
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse dolorum quidem itaque a tempora sint corrupti ullam tenetur molestias dignissimos sit, quasi aut, inventore exercitationem accusamus alias, assumenda repudiandae delectus.</p>
+        }       
     </>
 }
