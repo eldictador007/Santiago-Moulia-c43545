@@ -3,11 +3,16 @@ import Badge from 'react-bootstrap/Badge';
 
 //  import CartWidget from '../CartWidget/CartWidget';
 
-function Counter({stock}) {
+function Counter({stock, onAdd}) {
     const [count, setCount] = useState(1);    
     // useEffect(() => {
     //     document.title = `You clicked ${count} times`;
     //     },[]);
+    const handleOnAdd = () => {
+      onAdd(count)
+
+      
+  }
     return (
       <div className='container'>
         
@@ -16,7 +21,7 @@ function Counter({stock}) {
         <button className='btn bg-success p-2 m-3 fw-bolder' onClick={() => count<stock? setCount(count + 1): alert('Lo sentimos, no hay mas aticulos disponbles')}> + </button>
         
         <br></br>
-        <button className='btn bg-info p-3 m-5 fw-bolder' onClick={() => alert(`Agregaste ${count} productos al carro!`)}>Agregar al Carrito</button>
+        <button className='btn bg-info p-3 m-5 fw-bolder' onClick={handleOnAdd}>Agregar al Carrito</button>
       </div>
     );
   }
