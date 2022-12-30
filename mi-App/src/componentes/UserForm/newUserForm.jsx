@@ -1,7 +1,24 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { useCartContext } from '../../context/cartContext';
 
 function UserForm() {
+
+    const {cartList}= useCartContext()
+    console.log(cartList)
+    // const checkOut=()=>{
+    //     const cashIn={
+    //         ...cartList,
+    //         userData:{
+    //             userName,
+    //             mail,
+    //             phone                
+    //         },
+    //         date,
+    //         subb
+    //     }
+        
+    // }
   return (
     <Form>
       <Form.Group className="mb-3" controlId="formBasicName">
@@ -23,7 +40,7 @@ function UserForm() {
       <Form.Group className="mb-2" controlId="formBasicCheckbox">
         <Form.Check type="checkbox" label="Subribirme a ofertas y noticias!" />
       </Form.Group>
-      <Button className="m-3" variant="info" type="submit">
+      <Button className="m-3"  variant="info" type="submit">
         Confirmar
       </Button>
     </Form>
