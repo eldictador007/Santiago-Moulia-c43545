@@ -9,22 +9,17 @@ import { gFetch } from '../../assets/fetchProds'
 import  ItemList  from "./itemList"
 import Loading from '../Loading/Loading'
 
-const ItemListContainer = ( { saludo = 'BIENVENID@' } ) => { 
+const ItemListContainer = () => { 
     const [ products, setProduct ] = useState([])
     const [loading, setLoading] = useState(true)
-    const {categoryId}= useParams()
-    
+    const {categoryId}= useParams()    
      useEffect(()=>{
          if (categoryId){
-
              gFetch().then(data => setProduct(data.filter(prod=>prod.cat==categoryId.toUpperCase()))).catch(err => console.log(err)).finally(()=> setLoading(false))
          }else{
              gFetch().then(data => setProduct(data)).catch(err => console.log(err)).finally(()=> setLoading(false))
-
          }
      }, [categoryId])
-
-
      
     //  useEffect(()=>{
 
@@ -43,10 +38,8 @@ const ItemListContainer = ( { saludo = 'BIENVENID@' } ) => {
     
     return (
         <section >        
-            { loading ? <Loading greeting='BIENVENID@!'/> : <ItemList productos={products}/>
-         
-        }            
-        
+            { loading ? <Loading greeting='BIENVENID@!'/> : <ItemList productos={products}/>         
+        }                    
         </section>
     )
 }
