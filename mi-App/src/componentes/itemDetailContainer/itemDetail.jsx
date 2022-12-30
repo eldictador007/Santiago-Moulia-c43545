@@ -11,7 +11,6 @@ export const ItemDetail =({product})=>{
    const {cartList, addToCart} = useCartContext()
     
     const onAdd = (cant) => {
-        console.log('la cantidad seleccionada es: ',cant)
         addToCart( { ...product, cant } )
         setIsCant(true)
     }

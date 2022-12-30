@@ -10,14 +10,14 @@ import  ItemList  from "./itemList"
 import Loading from '../Loading/Loading'
 
 const ItemListContainer = () => { 
-    const [ products, setProduct ] = useState([])
+    const [ products, setProducts ] = useState([])
     const [loading, setLoading] = useState(true)
     const {categoryId}= useParams()    
      useEffect(()=>{
          if (categoryId){
-             gFetch().then(data => setProduct(data.filter(prod=>prod.cat==categoryId.toUpperCase()))).catch(err => console.log(err)).finally(()=> setLoading(false))
+             gFetch().then(data => setProducts(data.filter(prod=>prod.cat==categoryId.toUpperCase()))).catch(err => console.log(err)).finally(()=> setLoading(false))
          }else{
-             gFetch().then(data => setProduct(data)).catch(err => console.log(err)).finally(()=> setLoading(false))
+             gFetch().then(data => setProducts(data)).catch(err => console.log(err)).finally(()=> setLoading(false))
          }
      }, [categoryId])
      
@@ -25,20 +25,20 @@ const ItemListContainer = () => {
 
     //      const db= getFirestore()
     //      const queryDoc= doc(db, 'products', 'FDWkVsfNIzRQvtNzW4Xt')
-    //      getDoc(queryDoc).then(resp=>setProduct(resp.id))
+    //      getDoc(queryDoc).then(resp=>setProducts(resp.id))
     //  },[categoryId])
 
     // useEffect(()=>{
     //     const db = getFirestore()
     //     const queryDocuments= docs(db,'products')
-    //     getDocs(queryDocuments).then(data=>setProduct(data.docs.map(product=>({id:product.id, ...product.data()}))))
+    //     getDocs(queryDocuments).then(data=>setProducts(data.docs.map(product=>({id:product.id, ...product.data()}))))
     //     .catch(err=>console.log(err))
 
     // },[id])
     
     return (
         <section >        
-            { loading ? <Loading greeting='BIENVENID@!'/> : <ItemList productos={products}/>         
+            { loading ? <Loading greeting='BIENVENID@!'/> : <ItemList products={products}/>         
         }                    
         </section>
     )

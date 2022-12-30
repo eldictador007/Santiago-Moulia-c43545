@@ -1,6 +1,6 @@
 import { Item } from "./item";
 
-const ItemList = ({ productos }) => {
+const ItemList = ({ products }) => {
   return (
     <div
       style={{
@@ -10,7 +10,7 @@ const ItemList = ({ productos }) => {
         flexWrap: "wrap",
       }}
     >
-      {productos.map((prod) => (
+      {products.map((prod) => (
         <Item key={prod.id} product={prod} />
       ))}
     </div>
