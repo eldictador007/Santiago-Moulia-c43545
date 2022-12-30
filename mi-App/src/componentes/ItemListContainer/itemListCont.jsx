@@ -7,6 +7,7 @@ import {doc, getDoc, getDocs, getFirestore} from 'firebase/firestore'
 
 import { gFetch } from '../../assets/fetchProds'
 import  ItemList  from "./itemList"
+import Loading from '../Loading/Loading'
 
 const ItemListContainer = ( { saludo = 'BIENVENID@' } ) => { 
     const [ products, setProduct ] = useState([])
@@ -42,13 +43,7 @@ const ItemListContainer = ( { saludo = 'BIENVENID@' } ) => {
     
     return (
         <section >        
-            { loading ? <div  >
-                <h1 className="text-bg-primary">{saludo}!</h1>                
-                    <br></br>
-                <div className="spinner-border" role="status">
-                  <span className="visually-hidden">Loading...</span>
-                </div>
-            </div> : <ItemList productos={products}/>
+            { loading ? <Loading greeting='BIENVENID@!'/> : <ItemList productos={products}/>
          
         }            
         

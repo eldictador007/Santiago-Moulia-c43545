@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Counter from "../Contador/contador";
 import { useParams } from "react-router-dom";
 import { ItemDetail } from "./itemDetail";
+import Loading from "../Loading/Loading";
 
 export const ItemDetailContainer = () => {
   const [item, setItem] = useState([]);
@@ -33,11 +34,7 @@ export const ItemDetailContainer = () => {
   return (
     <>
       {loading ? (
-        <div style={{ padding: 120, textAlign: "center" }}>
-          <div className="spinner-border" role="status">
-            <span className="visually-hidden">Loading...</span>
-          </div>
-        </div>
+        <Loading greeting={'Obteniendo datos...'}/>
       ) : (
         <ItemDetail product={item} />
       )}
