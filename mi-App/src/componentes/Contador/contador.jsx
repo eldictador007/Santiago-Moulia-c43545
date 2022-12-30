@@ -3,11 +3,21 @@ import Badge from 'react-bootstrap/Badge';
 
 //  import CartWidget from '../CartWidget/CartWidget';
 
-function Counter({stock, onAdd}) {
+const Counter=({stock,initial=1, onAdd})=> {
     const [count, setCount] = useState(1);    
     // useEffect(() => {
     //     document.title = `You clicked ${count} times`;
     //     },[]);
+    const add=()=>{
+      if (count<stock){
+        setCount(count+1)
+      }
+    }
+    const substract=()=>{
+      if (count>initial){
+        setCount(count-1)
+      }
+    }
     const handleOnAdd = () => {
       onAdd(count)
 
@@ -16,9 +26,9 @@ function Counter({stock, onAdd}) {
     return (
       <div className='container'>
         
-        <button className='btn bg-warning p-2 m-3 fw-bolder' onClick={() => count>0? setCount(count - 1): alert('No es posible realizar esa operacion')}> - </button>        
+        <button className='btn bg-warning p-2 m-3 fw-bolder' onClick={substract}> - </button>        
        <Badge id='counter' bg="dark" pill='true' text="light">{count}</Badge> 
-        <button className='btn bg-success p-2 m-3 fw-bolder' onClick={() => count<stock? setCount(count + 1): alert('Lo sentimos, no hay mas aticulos disponbles')}> + </button>
+        <button className='btn bg-success p-2 m-3 fw-bolder' onClick={add}> + </button>
         
         <br></br>
         <button className='btn bg-info p-3 m-5 fw-bolder' onClick={handleOnAdd}>Agregar al Carrito</button>

@@ -1,33 +1,18 @@
+import { Link } from "react-router-dom"
 import { useState } from "react"
 import Counter from "../Contador/contador"
-import { Link } from "react-router-dom"
+import { useCartContext} from "../../context/cartContext"
+
 
 export const ItemDetail =({product})=>{
     const [isCant, setIsCant ] = useState(false)
-
-    const [cartList, setCartList] = useState([])
-    // modificar el cartList
-
-   
-
-    const agregarCarrito = (product) => {
-        // si está?
-        const idx = cartList.findIndex(prod => prod.id === product.id) //no esta -> -1
-        
-        if (idx !== -1) {
-            // cartList[idx].cant = cartList[idx].cant + product.cant
-            cartList[idx].cant +=  product.cant
-            setCartList( [ ...cartList ] ) 
-        } else {
-            setCartList([...cartList, product]) // push
-        }  
-        
-
-    }
+   // const useCartContext = () =>  useContext(useCartContext)
+   // const {addToCart}= useCartContext()
+   const {cartList, addToCart} = useCartContext()
     
     const onAdd = (cant) => {
         console.log('la cantidad seleccionada es: ',cant)
-        agregarCarrito( { ...product, cant } )
+        addToCart( { ...product, cant } )
         setIsCant(true)
     }
 
