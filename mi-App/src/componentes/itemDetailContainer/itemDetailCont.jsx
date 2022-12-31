@@ -13,14 +13,14 @@ export const ItemDetailContainer = () => {
   useEffect(() => {
     const db = getFirestore();
     const queryDoc=doc(db, 'prods', itemId)
-    if (itemId) {
+    // if (itemId) {
       getDoc(queryDoc)
       .then(resp=>setItem({id:resp.id, ...resp.data()}))
         .catch((err) => console.log(err))
         .finally(() => setLoading(false));
-    } else {
-       setLoading(false);
-    }
+    // } else {
+    //    setLoading(false);
+    // }
   }, [itemId]);
   return (
     <>

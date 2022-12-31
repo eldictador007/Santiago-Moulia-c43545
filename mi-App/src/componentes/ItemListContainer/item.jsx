@@ -1,6 +1,7 @@
+import { memo } from "react";
 import { Link } from "react-router-dom";
 
-export const Item = ({ product }) => {
+const Item = memo(({ product }) => {
   return (
     <div
       style={{ margin: "auto", padding: 15, maxWidth: 450 }}
@@ -15,11 +16,12 @@ export const Item = ({ product }) => {
         <div className="card-footer">
           <Link to={`/detalle/${product.id}`}>
             <button className="btn btn-outline-primary btn-block">
-              detalles
+              Detalles
             </button>
           </Link>
         </div>
       </div>
     </div>
   );
-};
+});
+export default Item

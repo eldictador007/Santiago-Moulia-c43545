@@ -1,17 +1,12 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-
 import {
   collection,
-  doc,
-  getDoc,
   getDocs,
   getFirestore,
   query,
   where,
 } from "firebase/firestore";
-
-import { gFetch } from "../../assets/fetchProds";
 import ItemList from "./itemList";
 import Loading from "../Loading/Loading";
 
@@ -29,7 +24,7 @@ const ItemListContainer = () => {
       getDocs(filteredQuery)
         .then((data) =>
           setProducts(
-            data.docs.map((prod) => ({ id: prod.id, ...prod.data() }))
+            data.docs.map(prod => ({ id: prod.id, ...prod.data() }))
           )
         )
         .catch((err) => console.log(err))
@@ -38,7 +33,7 @@ const ItemListContainer = () => {
       getDocs(queryCollection)
         .then((data) =>
           setProducts(
-            data.docs.map((prod) => ({ id: prod.id, ...prod.data() }))
+            data.docs.map(prod => ({ id: prod.id, ...prod.data() }))
           )
         )
         .catch((err) => console.log(err))
@@ -48,11 +43,11 @@ const ItemListContainer = () => {
 
   return (
     <section>
-      {loading ? (
+      {loading ? 
         <Loading greeting="BIENVENID@!" />
-      ) : (
+       : 
         <ItemList products={products} />
-      )}
+      }
     </section>
   );
 };

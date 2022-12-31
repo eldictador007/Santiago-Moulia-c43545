@@ -3,8 +3,8 @@ import Badge from 'react-bootstrap/Badge';
 
 //  import CartWidget from '../CartWidget/CartWidget';
 
-const Counter=({stock,initial=1, onAdd})=> {
-    const [count, setCount] = useState(1);    
+const Counter= ({stock=2,initial=1, onAdd})=> {
+    const [count, setCount] = useState(initial);    
     // useEffect(() => {
     //     document.title = `You clicked ${count} times`;
     //     },[]);

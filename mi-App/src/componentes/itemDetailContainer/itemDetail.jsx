@@ -44,7 +44,7 @@ export const ItemDetail = ({ product }) => {
               </>
             ) : (
               <>
-                <Counter stock={product.stock} onAdd={onAdd} />
+                <Counter stock={product.stock} initial={1} onAdd={onAdd} />
                 <p>
                   Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse
                   dolorum quidem itaque a tempora sint corrupti ullam tenetur
