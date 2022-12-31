@@ -1,7 +1,15 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-import { doc, getDoc, getDocs, getFirestore } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  getFirestore,
+  query,
+  where,
+} from "firebase/firestore";
 
 import { gFetch } from "../../assets/fetchProds";
 import ItemList from "./itemList";
@@ -12,34 +20,32 @@ const ItemListContainer = () => {
   const [loading, setLoading] = useState(true);
   const { categoryId } = useParams();
   useEffect(() => {
+    const db = getFirestore();
+    const queryCollection = collection(db, "prods");
     if (categoryId) {
-      gFetch()
+      const filteredQuery = query(
+        queryCollection,
+        where("cat", "==", categoryId.toUpperCase()));
+      getDocs(filteredQuery)
         .then((data) =>
           setProducts(
-            data.filter((prod) => prod.cat == categoryId.toUpperCase())
+            data.docs.map((prod) => ({ id: prod.id, ...prod.data() }))
           )
         )
         .catch((err) => console.log(err))
         .finally(() => setLoading(false));
     } else {
-      gFetch()
-        .then((data) => setProducts(data))
+      getDocs(queryCollection)
+        .then((data) =>
+          setProducts(
+            data.docs.map((prod) => ({ id: prod.id, ...prod.data() }))
+          )
+        )
         .catch((err) => console.log(err))
         .finally(() => setLoading(false));
     }
   }, [categoryId]);
 
-  //  useEffect(()=>{
-  //      const db= getFirestore()
-  //      const queryDoc= doc(db, 'products', 'FDWkVsfNIzRQvtNzW4Xt')
-  //      getDoc(queryDoc).then(resp=>setProducts(resp.id))
-  //  },[categoryId])
-  // useEffect(()=>{
-  //     const db = getFirestore()
-  //     const queryDocuments= docs(db,'products')
-  //     getDocs(queryDocuments).then(data=>setProducts(data.docs.map(product=>({id:product.id, ...product.data()}))))
-  //     .catch(err=>console.log(err))
-  // },[id])
   return (
     <section>
       {loading ? (

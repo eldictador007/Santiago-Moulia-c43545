@@ -4,7 +4,7 @@ import App from './App'
 import { initFirestoreApp } from './firestore/config'
 
 
-//initFirestoreApp()
+initFirestoreApp()
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

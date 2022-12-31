@@ -7,7 +7,7 @@ export const useCartContext = () => useContext(CartContext)
 export const CartContextProvider = ({ children }) => {
   const [cartList, setCartList] = useState([])
 
-  const addToCart = (product) => {
+  const addToCart = ({product}) => {
     const idx = cartList.findIndex((prod) => prod.id === product.id)
 
     if (idx !== -1) {
