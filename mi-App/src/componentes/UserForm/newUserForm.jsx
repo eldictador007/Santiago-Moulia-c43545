@@ -3,9 +3,7 @@ import Form from 'react-bootstrap/Form';
 import { useCartContext } from '../../context/cartContext';
 
 function UserForm() {
-
-    const {cartList}= useCartContext()
-    console.log(cartList)
+  //  const {cartList}= useCartContext()
     // const checkOut=()=>{
     //     const cashIn={
     //         ...cartList,
@@ -16,8 +14,7 @@ function UserForm() {
     //         },
     //         date,
     //         subb
-    //     }
-        
+    //     }        
     // }
   return (
     <Form>
@@ -29,7 +26,6 @@ function UserForm() {
         <Form.Label>Direccion de correo electronico</Form.Label>
         <Form.Control type="email" placeholder="tumail@ejemplo.com" />
       </Form.Group>
-
       <Form.Group className="mb-5" controlId="formBasicPassword">
         <Form.Label>Telefono</Form.Label>
         <Form.Control type="phone" placeholder="02405686" />
@@ -46,5 +42,4 @@ function UserForm() {
     </Form>
   );
 }
-
 export default UserForm;

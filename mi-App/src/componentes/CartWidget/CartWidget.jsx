@@ -1,10 +1,8 @@
-import { useState } from "react";
 import { Badge, Button } from "react-bootstrap";
 import { useCartContext } from "../../context/cartContext";
 
 const Cartwidget = () => {
-  const { totalCount } = useCartContext()
-  
+  const { totalCount } = useCartContext();
   return (
     <div>
       <Button variant="secondary">
@@ -21,11 +19,11 @@ const Cartwidget = () => {
           />
         </svg>
         <Badge id="compra" bg="light" pill="true" text="dark">
-          {0}
+          {totalCount() !== 0 && totalCount()}
         </Badge>
         <span className="visually-hidden">Items en tu carrito</span>
       </Button>
     </div>
-  )
-}
-export default Cartwidget
+  );
+};
+export default Cartwidget;

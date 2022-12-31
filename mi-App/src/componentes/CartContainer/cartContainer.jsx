@@ -4,7 +4,6 @@ import UserForm from "../UserForm/newUserForm";
 
 const CartContainer = () => {
   const { cartList, emptyCart, totalPrice, deleteItem } = useCartContext();
-  console.log(cartList)
   return (
     <div style={{ margin: "auto", textAlign: "center", maxWidth: 600 }}>
       {cartList.length !== 0 ? 
@@ -38,8 +37,7 @@ const CartContainer = () => {
                 </div>
               </li>
               </div>)}
-          </ul>
-            
+          </ul>            
           <div style={{ padding: 15 }}>
             <h2>Precio total: ${totalPrice()} </h2>
             <button
@@ -55,7 +53,7 @@ const CartContainer = () => {
               Finalizar compra!
             </button>
           </div>
-          {/* <UserForm/> */}
+          <UserForm/>
         </div>
         </>
        : 

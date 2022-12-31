@@ -21,13 +21,13 @@ export const NavBar = () => {
               </NavLink>
             </Nav>
             <Nav>
-              {/* <NavLink to="/carrito">
+              <NavLink to="/carrito">
                 <Cartwidget />
-              </NavLink> */}
+              </NavLink>
             </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
     </>
-  )
-}
+  );
+};
