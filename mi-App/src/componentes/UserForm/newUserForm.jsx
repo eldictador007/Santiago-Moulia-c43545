@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { addDoc, collection, getFirestore } from "firebase/firestore";
-
 import { useCartContext } from "../../context/cartContext";
 
 function UserForm() {
@@ -8,18 +7,18 @@ function UserForm() {
     name: "",
     email: "",
     phone: "",
+    emailConfirm: "",
   });
   const { cartList, totalPrice, emptyCart } = useCartContext();
   const addOrder = (e) => {
     e.preventDefault();
+    const db = getFirestore();
     const order = {};
     order.buyer = dataForm;
     order.price = totalPrice();
-    order.date= Date()
+    order.date = Date();
     order.items = cartList.map(({ id, price, name }) => ({ id, price, name }));
-    const db = getFirestore();
     const queryCollection = collection(db, "orders");
-
     addDoc(queryCollection, order)
       .then((resp) => console.log(resp))
       .catch((err) => console.log(err))
@@ -31,7 +30,6 @@ function UserForm() {
       [e.target.name]: e.target.value,
     });
   };
-
   return (
     <>
       <form onSubmit={addOrder}>
@@ -70,7 +68,7 @@ function UserForm() {
               className="form-control"
               type="text"
               onChange={handleOnChange}
-              name="email"
+              name="emailConfirm"
               value={dataForm.emailConfirm}
               placeholder="Verifica tu E-mail"
             />

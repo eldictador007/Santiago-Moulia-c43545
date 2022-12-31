@@ -20,11 +20,12 @@ const ItemListContainer = () => {
     if (categoryId) {
       const filteredQuery = query(
         queryCollection,
-        where("cat", "==", categoryId.toUpperCase()));
+        where("cat", "==", categoryId.toUpperCase())
+      );
       getDocs(filteredQuery)
         .then((data) =>
           setProducts(
-            data.docs.map(prod => ({ id: prod.id, ...prod.data() }))
+            data.docs.map((prod) => ({ id: prod.id, ...prod.data() }))
           )
         )
         .catch((err) => console.log(err))
@@ -33,7 +34,7 @@ const ItemListContainer = () => {
       getDocs(queryCollection)
         .then((data) =>
           setProducts(
-            data.docs.map(prod => ({ id: prod.id, ...prod.data() }))
+            data.docs.map((prod) => ({ id: prod.id, ...prod.data() }))
           )
         )
         .catch((err) => console.log(err))
@@ -43,11 +44,11 @@ const ItemListContainer = () => {
 
   return (
     <section>
-      {loading ? 
+      {loading ? (
         <Loading greeting="BIENVENID@!" />
-       : 
+      ) : (
         <ItemList products={products} />
-      }
+      )}
     </section>
   );
 };

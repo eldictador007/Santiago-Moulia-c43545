@@ -4,7 +4,6 @@ import UserForm from "../UserForm/newUserForm";
 
 const CartList = () => {
   const { cartList, emptyCart, totalPrice, deleteItem } = useCartContext();
-
   return (
     <div style={{ margin: "auto", textAlign: "center", maxWidth: 600 }}>
       {cartList.length !== 0 ? (
