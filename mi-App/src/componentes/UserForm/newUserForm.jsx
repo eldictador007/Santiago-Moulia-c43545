@@ -74,7 +74,7 @@ function UserForm() {
             />
           </div>
           <button className="btn bg-info p-3 m-3 fw-bolder">
-            Terminar Compra
+            Finalizar Compra
           </button>
         </div>
       </form>
